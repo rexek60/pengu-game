@@ -1,0 +1,7 @@
+class UIScene extends Phaser.Scene {
+ constructor(){ super('UIScene'); }
+ create(){
+   this.scoreText=this.add.text(20,20,'Score: 0',{fontSize:'24px',fill:'#fff'});
+ }
+ update(){}
+}
