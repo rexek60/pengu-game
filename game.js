@@ -1,71 +1,38 @@
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
 
-const c=document.getElementById("game");
-const ctx=c.getContext("2d");
+let pengu = { x:100, y:100, vx:0, vy:0, w:40, h:40 };
+let gravity = 0.5;
+let keys = {};
 
-let gravity=0.5;
-let player={x:80,y:300,w:32,h:32,vx:0,vy:0,speed:2.5,jump:-10,ground:false};
-let cam=0;
-let keys={};
-
-document.addEventListener("keydown",e=>keys[e.key]=true);
-document.addEventListener("keyup",e=>keys[e.key]=false);
-
-let pengu=new Image(); pengu.src="assets/pengu_idle.png";
-let brick=new Image(); brick.src="assets/brick.png";
-let bg=new Image(); bg.src="assets/bg.png";
-
-// 10 düşman
-let enemies=[];
-for(let i=0;i<10;i++){
-  enemies.push({x:500+i*250,y:300,w:32,h:32,dir:i%2==0?1:-1,img:new Image()});
-  enemies[i].img.src="assets/enemy_"+(i+1)+".png";
-}
-
-function collide(a,b){
- return a.x<a.w+b.x&&a.x+a.w>b.x&&a.y<a.h+b.y&&a.y+a.h>b.y;
-}
+document.addEventListener("keydown", e => keys[e.code] = true);
+document.addEventListener("keyup", e => keys[e.code] = false);
 
 function update(){
+    pengu.vx = 0;
+    if(keys["ArrowLeft"])  pengu.vx = -4;
+    if(keys["ArrowRight"]) pengu.vx = 4;
+    if(keys["Space"] && pengu.y >= 500) pengu.vy = -10;
 
- if(keys["ArrowRight"]) player.vx=player.speed;
- else if(keys["ArrowLeft"]) player.vx=-player.speed;
- else player.vx*=0.8;
+    pengu.vy += gravity;
+    pengu.y += pengu.vy;
+    pengu.x += pengu.vx;
 
- if(keys[" "]&&player.ground){player.vy=player.jump;player.ground=false;}
+    if(pengu.y > 500){ pengu.y = 500; pengu.vy = 0; }
 
- player.vy+=gravity;
- player.x+=player.vx;
- player.y+=player.vy;
-
- if(player.y>300){player.y=300;player.vy=0;player.ground=true;}
-
- cam=player.x-200;if(cam<0)cam=0;
-
- enemies.forEach(e=>{
-  e.x+=e.dir*1.4;
-  if(e.x<200||e.x>4000)e.dir*=-1;
-  if(collide(player,e)){
-    alert("Öldün! Tekrar dene!");
-    location.reload();
-  }
- });
-
- if(player.x>4500){
-   alert("Tebrikler! Level tamamlandı!");
-   location.reload();
- }
+    draw();
+    requestAnimationFrame(update);
 }
 
 function draw(){
- ctx.clearRect(0,0,900,500);
+    ctx.fillStyle = "#8bd3ff";
+    ctx.fillRect(0,0,900,600);
 
- for(let i=0;i<500;i++) ctx.drawImage(bg,(i*16-cam)%900,0,900,500);
- for(let i=0;i<200;i++) ctx.drawImage(brick,i*32-cam,350,32,32);
+    ctx.fillStyle = "#a0522d";
+    for(let i=0;i<20;i++) ctx.fillRect(i*45,540,40,40);
 
- enemies.forEach(e=>ctx.drawImage(e.img,e.x-cam,e.y,32,32));
-
- ctx.drawImage(pengu,player.x-cam,player.y,32,32);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(pengu.x,pengu.y,pengu.w,pengu.h);
 }
 
-function loop(){update();draw();requestAnimationFrame(loop);}
-loop();
+update();
