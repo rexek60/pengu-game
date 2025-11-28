@@ -1,15 +1,12 @@
-// Basit Pengu oyun motoru placeholder
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
 
-let wallet = localStorage.getItem("pengu_wallet");
-let name = localStorage.getItem("pengu_name");
+let pengu=new Image();
+pengu.src="assets/pengu.png";
 
-function loop() {
+function loop(){
     ctx.clearRect(0,0,900,500);
-    ctx.font="24px Arial";
-    ctx.fillText("Hoşgeldin: " + name, 20, 40);
-    ctx.fillText("Cüzdan: " + wallet, 20, 80);
+    ctx.drawImage(pengu,100,300,80,80);
     requestAnimationFrame(loop);
 }
-loop();
+pengu.onload = loop;
