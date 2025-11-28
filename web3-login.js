@@ -1,1 +1,1 @@
-// placeholder
+if(!localStorage.getItem('pengu_name'))window.location='login.html';

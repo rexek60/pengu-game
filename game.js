@@ -1,1 +1,1 @@
-console.log('engine placeholder');
+console.log('Pengu advanced engine placeholder loaded');
