@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Pengu Login</title>
+<style>
+ body{font-family:Arial;margin:0;padding:20px;text-align:center;}
+ button{padding:12px 20px;margin:10px;font-size:18px;}
+ input{padding:10px;font-size:16px;width:80%;}
+</style></head>
+<body>
+<h2>Pengu Web3 Giriş</h2>
+<button onclick="connectMetaMask()">MetaMask ile Bağlan</button><br>
+<button onclick="connectWalletConnect()">WalletConnect</button><br><br>
+<input id="playerName" placeholder="Pengu adını yaz"><br><br>
+<button onclick="continueGame()">Devam Et</button>
+<script src="web3-login.js"></script>
+</body></html>

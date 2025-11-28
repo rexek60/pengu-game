@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengu Game</title>
-<style>
- body{margin:0;background:#6ec9ff;overflow:hidden;}
- canvas{display:block;margin:0 auto;}
-</style>
-</head>
+<html><head><meta charset='UTF-8'><title>Pengu Game</title></head>
 <body>
+<script>
+const w = localStorage.getItem("pengu_wallet");
+if(!w){ window.location.href = "login.html"; }
+</script>
 <canvas id="game" width="900" height="500"></canvas>
 <script src="game.js"></script>
-</body>
-</html>
+</body></html>
