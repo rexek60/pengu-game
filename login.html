@@ -1,1 +1,18 @@
-<html><body>Login Placeholder</body></html>
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Login</title></head>
+<body style="text-align:center; padding-top:100px;">
+<h2>Pengu Web3 Login</h2>
+<input id="wallet" placeholder="Cüzdan adresi"><br><br>
+<button onclick="login()">Giriş</button>
+
+<script>
+function login(){
+  let w=document.getElementById("wallet").value;
+  if(!w){ alert("Cüzdan gir!"); return; }
+  localStorage.setItem("pengu_wallet",w);
+  window.location="game.html";
+}
+</script>
+</body>
+</html>
