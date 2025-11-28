@@ -1,15 +1,1 @@
-<!DOCTYPE html><html><body>
-<h2>Login</h2>
-<input id='name' placeholder='İsim'><br><br>
-<input id='wallet' placeholder='Cüzdan'><br><br>
-<button onclick='login()'>Giriş</button>
-<script>
-function login(){
- let n=document.getElementById('name').value;
- let w=document.getElementById('wallet').value;
- if(!n||!w){alert('Boş geçilemez');return;}
- localStorage.setItem('pengu_name',n);
- localStorage.setItem('pengu_wallet',w);
- window.location='index.html';
-}
-</script></body></html>
+<html><body>Login Placeholder</body></html>

@@ -1,1 +1,1 @@
-console.log('Phaser game placeholder');
+console.log('placeholder engine');
