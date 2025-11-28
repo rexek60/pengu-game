@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Giriş</title></head>
+<body>
+<h2>Giriş Yap</h2>
+<input id="name" placeholder="İsmin">
+<input id="wallet" placeholder="Cüzdan">
+<button onclick="login()">Giriş</button>
+<script>
+function login(){
+  localStorage.setItem("pengu_name", document.getElementById("name").value);
+  localStorage.setItem("pengu_wallet", document.getElementById("wallet").value);
+  window.location.href="index.html";
+}
+</script>
+</body>
+</html>
