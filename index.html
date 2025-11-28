@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pengu Game</title>
+    <style>
+        body { margin:0; background:#86d3ff; }
+        canvas { display:block; margin:0 auto; }
+    </style>
+</head>
+<body>
+
+<script>
+const w = localStorage.getItem("pengu_wallet");
+const n = localStorage.getItem("pengu_name");
+
+if (!w || !n) {
+    window.location.href = "login.html";
+}
+</script>
+
+<canvas id="game" width="900" height="500"></canvas>
+
+<script src="game.js"></script>
+
+</body>
+</html>
