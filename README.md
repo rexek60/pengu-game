@@ -1,2 +1,2 @@
-# pengu-game
-Web3 Pengu Adventure Game
+# Pengu Game
+Placeholder
