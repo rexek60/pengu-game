@@ -1,2 +1,21 @@
 <!DOCTYPE html>
-<html><body><h1>Giriş Yap</h1></body></html>
+<html lang="tr">
+<head><meta charset="UTF-8"><title>Giriş Yap</title></head>
+<body>
+<h2>Pengu Giriş</h2>
+<input id="name" placeholder="İsmin"><br><br>
+<input id="wallet" placeholder="Cüzdan"><br><br>
+<button onclick="login()">Giriş</button>
+
+<script>
+function login(){
+    let n=document.getElementById("name").value;
+    let w=document.getElementById("wallet").value;
+    if(!n || !w){ alert("Boş bırakılamaz!"); return; }
+    localStorage.setItem("pengu_name", n);
+    localStorage.setItem("pengu_wallet", w);
+    window.location.href="index.html";
+}
+</script>
+</body>
+</html>
